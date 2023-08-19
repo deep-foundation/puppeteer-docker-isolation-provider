@@ -7,6 +7,10 @@ import http from 'http';
 // import { parseStream, parseFile } from 'music-metadata';
 import { createRequire } from 'node:module';
 import bodyParser from 'body-parser';
+
+// Import Puppeteer
+import puppeteer from 'puppeteer';
+
 const require = createRequire(import.meta.url);
 
 const memoEval = memoize(eval);
@@ -102,6 +106,28 @@ app.use('/http-call', async (req, res, next) => {
     res.json({ rejected: processedRejection }); // TODO: Do we need to send json to client?
   }
 });
+
+// Start Puppeteer browser
+//const browser = puppeteer.launch();
+console.log('Puppeteer browser started');
+
+(async () => {
+  // Launch a headless browser instance
+  const browser = await puppeteer.launch();
+
+  // Create a new page
+  const page = await browser.newPage();
+
+  // Navigate to Google
+  await page.goto('https://www.google.com');
+
+  // Capture a screenshot of the search results page
+  await page.screenshot({ path: 'google-search.png' });
+
+  // Close the browser
+  await browser.close();
+})();
+
 
 http.createServer({ maxHeaderSize: 10*1024*1024*1024 }, app).listen(process.env.PORT);
 console.log(`Listening ${process.env.PORT} port`);

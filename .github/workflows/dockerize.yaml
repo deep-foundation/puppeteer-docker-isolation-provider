@@ -1,7 +1,7 @@
 name: Deploy deepRunnerPuppeteer
 on:
   push:
-    branches: [ dev ]
+    branches: [ main ]
   workflow_dispatch:
 defaults:
   run:

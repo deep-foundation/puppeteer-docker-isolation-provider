@@ -23,4 +23,5 @@
 ### Puppeteer install
 ```bash
 npm install puppeteer
+npm run package:build
 ```
