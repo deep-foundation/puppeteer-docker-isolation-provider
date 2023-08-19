@@ -79,7 +79,7 @@ app.post('/call', async (req, res) => {
     const fn = makeFunction(code);
     const deep = makeDeepClient(jwt);
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-    const result = await fn({ data, deep, gql, require: requireWrapper }); // Supports both sync and async functions the same way
+    const result = await fn({ browser, data, deep, gql, require: requireWrapper }); // Supports both sync and async functions the same way
     await browser.close();
     console.log('call result', result);
     res.json({ resolved: result });
