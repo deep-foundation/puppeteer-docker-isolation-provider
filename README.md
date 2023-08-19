@@ -22,6 +22,9 @@
 
 ### Puppeteer install
 ```bash
-npm install puppeteer
 npm run package:build
+
+docker build -t puppeteer-docker-isolation-provider .
+docker run -d -p 39102:39102 -e PORT=39102 puppeteer-docker-isolation-provider
+
 ```

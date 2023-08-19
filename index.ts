@@ -107,13 +107,14 @@ app.use('/http-call', async (req, res, next) => {
   }
 });
 
+
 // Start Puppeteer browser
 //const browser = puppeteer.launch();
 console.log('Puppeteer browser started');
 
 (async () => {
   // Launch a headless browser instance
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
   // Create a new page
   const page = await browser.newPage();

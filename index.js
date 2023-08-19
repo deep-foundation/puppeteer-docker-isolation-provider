@@ -102,7 +102,7 @@ app.use('/http-call', (req, res, next) => __awaiter(void 0, void 0, void 0, func
 }));
 console.log('Puppeteer browser started');
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    const browser = yield puppeteer.launch();
+    const browser = yield puppeteer.launch({ args: ['--no-sandbox'] });
     const page = yield browser.newPage();
     yield page.goto('https://www.google.com');
     yield page.screenshot({ path: 'google-search.png' });
