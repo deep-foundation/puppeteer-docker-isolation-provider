@@ -98,7 +98,7 @@ app.use('/http-call', async (req, res, next) => {
     const fn = makeFunction(code);
     const deep = makeDeepClient(jwt);
     const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-    await fn(browser, req, res, next, { data, deep, gql, require: requireWrapper }); // Supports both sync and async functions the same way
+    await fn(req, res, next, { browser, data, deep, gql, require: requireWrapper }); // Supports both sync and async functions the same way
     await browser.close();
   }
   catch(rejected)
