@@ -19,3 +19,8 @@
           - promiseId - from deeplinks, promise id
   - Response:
     - `{ resolved?: any; rejected?: any; }` - If resolved or rejected is not null, then it's result of execution
+
+### Puppeteer install
+```bash
+npm install puppeteer
+```
